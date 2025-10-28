@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ShoppingApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <style>
+      body { font-family: sans-serif; margin: 20px; }
+      table { border-collapse: collapse; width: 60%; }
+      th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+      th { background-color: #f2f2f2; }
+      .nav { margin-bottom: 20px; }
+      .form-group { margin-bottom: 10px; }
+      .actions { margin-top: 10px; }
+      .total { margin-top: 20px; font-weight: bold; }
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+      <%= link_to '商品一覧', products_path %> |
+      <%= link_to '商品を登録する', new_product_path %> |
+      <%= link_to "カートを見る (#{current_cart.cart_items.sum(:qty)}個)", cart_path(current_cart) %>
+    </div>
+    <%= yield %>
+  </body>
+</html>
